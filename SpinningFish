@@ -1,0 +1,42 @@
+#!/usr/bin/env python3
+
+from os import get_terminal_size
+from sys import exit, stdout
+from time import sleep
+from signal import signal, SIGINT
+
+
+def signal_handler(sig, frame):
+    print("\033[H\033[2J")
+    exit(0)
+
+def spin_the_fish():
+
+    signal(SIGINT, signal_handler)
+    frames = 20
+    l = 0
+    terminal_size = get_terminal_size()[0]
+
+    if terminal_size <= 160:
+        fish_size_old = 80
+    else:
+        fish_size_old = 160
+
+    while l < 1000:
+        for i in range(frames):
+            terminal_size = get_terminal_size()[0]
+            if terminal_size <= 160:
+                fish_size = 80
+            else:
+                fish_size = 160
+            with open(f'{fish_size}/fish{i}.txt', 'r') as f:
+                 print(f.read())
+            f.close()
+            cur = "\033[A\r"*(fish_size//4-1)
+            stdout.write(cur)
+            sleep(0.06)
+            fish_size_old = fish_size
+        l += 1
+    
+if __name__ == "__main__":
+   spin_the_fish()
