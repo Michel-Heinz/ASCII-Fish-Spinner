@@ -13,7 +13,7 @@ Dive into an aquatic wonderland with this enchanting ASCII Fish Spinner! 🌊�
 ## Get Started
 
 1. Clone the repository.
-2. Run the Python script in your terminal.
+2. Run the Python script in your terminal (./SpinningFish).
 3. Let the ASCII fish spinner mesmerize you.
 
 Join the aquatic adventure now! 🌊🐟
